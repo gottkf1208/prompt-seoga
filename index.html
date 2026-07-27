@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>사서 선생님의 프롬프트 서가 — 학교도서관에서 쓰는 생성형 AI</title>
+<meta name="description" content="수서와 장서점검부터 북큐레이션, 협력수업, 저작권까지. 학교도서관진흥법과 교육청 시행계획에 근거해 정리한 사서교사용 생성형 AI 프롬프트 86편.">
+<meta name="theme-color" content="#FFFDF8">
+<meta property="og:title" content="사서 선생님의 프롬프트 서가">
+<meta property="og:description" content="학교도서관 일에 실제로 쓰는 생성형 AI 프롬프트 86편. 채울 칸을 채우면 바로 복사됩니다.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.css">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23FFFDF8'/><text y='74' x='50' text-anchor='middle' font-size='66' font-family='serif' font-weight='700' fill='%231F5148'>架</text></svg>">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="shell">
+    <div class="masthead__bar">
+      <b>학교도서관 · 사서교사</b>
+      <span class="sp"></span>
+      <span id="stamp">제2호</span>
+    </div>
+    <div class="masthead__main">
+      <div class="masthead__kicker">학교도서관에서 쓰는 생성형 인공지능</div>
+      <h1 class="masthead__title">사서 선생님의 프롬프트 서가</h1>
+      <div class="masthead__rule"></div>
+      <p class="masthead__sub">
+        한 해 예산으로 무엇을 들일지 고르는 일, 아무도 빌려가지 않는 책을 다시 세우는 일,
+        교과 선생님께 먼저 손을 내미는 일, 그리고 학교에 나 혼자인 자리를 견디는 일까지.
+        학교도서관의 결에 맞춰 정리한 프롬프트를 모았습니다.
+      </p>
+      <div class="masthead__meta"><span id="totalline">—</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="toolbar">
+  <div class="shell">
+    <div class="toolbar__in">
+      <label class="search">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+          <circle cx="7" cy="7" r="4.6"/><path d="M10.4 10.4 14 14" stroke-linecap="round"/>
+        </svg>
+        <span class="sr">프롬프트 검색</span>
+        <input id="q" type="search" placeholder="무엇을 하려고 하시나요  ·  북큐레이션, 장서점검, 협력수업, 저작권…" autocomplete="off">
+        <button class="search__clear" id="qx" aria-label="검색어 지우기">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 3l8 8M11 3l-8 8"/></svg>
+        </button>
+      </label>
+
+      <button class="tbtn" id="favbtn" aria-pressed="false">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M8 1.8l1.9 3.9 4.3.6-3.1 3 .7 4.3L8 11.6 4.2 13.6l.7-4.3-3.1-3 4.3-.6z"/></svg>
+        담아둔 것 <span class="cnt" id="favcnt">0</span>
+      </button>
+
+      <button class="tbtn" id="themebtn" aria-label="밝기 전환">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M13.4 9.6A5.8 5.8 0 0 1 6.4 2.6a5.8 5.8 0 1 0 7 7z" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <div class="chips" id="chips"><span class="chips__lead">이럴 때</span></div>
+  </div>
+</nav>
+
+<main class="shell layout">
+
+  <aside class="rail">
+    <div class="rail__h">서가</div>
+    <div class="rail__list" id="rail"></div>
+
+    <div class="rail__tools">
+      <button class="rail__tool" data-open="cal">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="2.2" y="3.2" width="11.6" height="10.6"/><path d="M2.2 6.4h11.6M5.4 2v2.4M10.6 2v2.4" stroke-linecap="round"/></svg>
+        월별 도서관 살림
+      </button>
+      <button class="rail__tool" data-open="copyright">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="8" cy="8" r="6.1"/><path d="M10.2 6.2a3 3 0 1 0 0 3.6" stroke-linecap="round"/></svg>
+        저작권 살펴보기
+      </button>
+      <button class="rail__tool" data-open="builder">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M2 4h12M2 8h8M2 12h10" stroke-linecap="round"/></svg>
+        프롬프트 직접 짜기
+      </button>
+      <button class="rail__tool" data-open="checker">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M8 1.6l5.2 2v4.1c0 3.1-2.1 5.6-5.2 6.7-3.1-1.1-5.2-3.6-5.2-6.7V3.6z" stroke-linejoin="round"/></svg>
+        넣기 전 개인정보 점검
+      </button>
+      <button class="rail__tool" data-open="rules">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M3 2.4h7l3 3v8.2H3z" stroke-linejoin="round"/><path d="M10 2.4v3h3" stroke-linejoin="round"/></svg>
+        사서교사의 다섯 가지
+      </button>
+    </div>
+  </aside>
+
+  <section>
+    <div class="listhead">
+      <h2 class="listhead__t" id="lh-t">전체</h2>
+      <div class="listhead__c" id="lh-c"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty" hidden>
+      <p>서가에서 찾지 못했습니다.</p>
+      <span>다른 낱말로 찾아보시거나, 아래에서 직접 한 편 지어 보세요.</span>
+      <div style="margin-top:18px"><button class="abtn ghost" data-open="builder">프롬프트 직접 짜기</button></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="colophon">
+  <div class="shell colophon__grid">
+    <div>
+      <h4>어디에 기대어 썼나</h4>
+      「학교도서관진흥법」 및 시행령 · 경기도교육청 「학교도서관 진흥 시행계획」 ·
+      교육부 「제4차 학교도서관진흥 기본계획」 · 「학교생활기록 작성 및 관리지침」 및 기재요령 ·
+      저작권법 제25조·제28조 및 교육목적 저작물 이용 가이드라인 ·
+      학교도서관 장서점검 및 제적·폐기 매뉴얼 · 독서로(read365.edunet.net) 운영 안내 ·
+      교육부 「생성형 인공지능 활용교육 가이드라인」
+    </div>
+    <div>
+      <h4>쓰기 전에</h4>
+      여기 있는 프롬프트는 <b>초안을 얻기 위한 도구</b>입니다.
+      특히 <b>책 제목·지은이·출판사는 AI가 자주 지어냅니다.</b>
+      도서 목록과 참고문헌은 반드시 한 권씩 대조하십시오.
+      대출 이력과 학생 명단은 어떤 경우에도 입력하지 않습니다.
+      법령 조문과 통계는 원문에서 확인하십시오.
+    </div>
+    <div>
+      <h4>서가에 대하여</h4>
+      담아둔 것과 채운 값은 이 브라우저에만 남습니다. 서버로 보내지 않습니다.<br>
+      <b id="foot-count">—</b><br>
+      <span style="opacity:.75">「선생님의 프롬프트 서재」의 두 번째 권</span>
+    </div>
+  </div>
+</footer>
+
+<!-- 상세 -->
+<div class="scrim" id="scrim"></div>
+<article class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="프롬프트 상세">
+  <div class="sheet__bar">
+    <span class="sheet__idx" id="sheet-idx"></span>
+    <span class="sp"></span>
+    <button class="tbtn" id="sheet-fav">담아두기</button>
+    <button class="tbtn" id="sheet-x" aria-label="닫기">
+      <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8"/></svg>
+    </button>
+  </div>
+  <div class="sheet__body" id="sheet-body"></div>
+</article>
+
+<!-- 월별 살림 -->
+<div class="modal" id="m-cal">
+  <div class="panel">
+    <button class="panel__x" data-close aria-label="닫기">
+      <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8"/></svg>
+    </button>
+    <div class="panel__k">학사력을 따라</div>
+    <h3 class="panel__t">월별 도서관 살림</h3>
+    <p class="panel__d">
+      사서교사의 일은 계절을 탑니다. 3월에 해두지 않으면 한 해가 힘들고,
+      1월에 미루면 다음 해로 넘어갑니다. 각 달에 무엇이 있는지 적어 두었습니다.
+      아래 항목을 누르면 그 일에 쓸 프롬프트가 열립니다.
+    </p>
+    <div class="cal" id="cal"></div>
+  </div>
+</div>
+
+<!-- 저작권 -->
+<div class="modal" id="m-copyright">
+  <div class="panel">
+    <button class="panel__x" data-close aria-label="닫기">
+      <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8"/></svg>
+    </button>
+    <div class="panel__k">하기 전에</div>
+    <h3 class="panel__t">저작권 살펴보기</h3>
+    <p class="panel__d">
+      학교도서관에서 자주 걸리는 열 가지를 모았습니다. <b>이것은 법률 자문이 아닙니다.</b>
+      같은 활동도 목적과 공개 범위에 따라 판단이 달라지므로, 여기 적힌 것은
+      <b>확인할 지점</b>일 뿐입니다. 판단이 서지 않으면 하지 않거나,
+      출판사에 문의하거나, 교육저작권지원센터·한국저작권위원회에 확인하십시오.
+    </p>
+    <div id="copyright"></div>
+    <div class="acts" style="margin-top:22px">
+      <button class="abtn ghost" data-goto="w01">내 경우를 검토하는 프롬프트 열기</button>
+    </div>
+  </div>
+</div>
+
+<!-- 빌더 -->
+<div class="modal" id="m-builder">
+  <div class="panel">
+    <button class="panel__x" data-close aria-label="닫기">
+      <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8"/></svg>
+    </button>
+    <div class="panel__k">직접 짓기</div>
+    <h3 class="panel__t">여섯 칸을 채우면 프롬프트가 됩니다</h3>
+    <p class="panel__d">
+      서가에 없는 일을 맡기실 때. 다 채우지 않아도 됩니다. 다만 <b>제약</b> 칸은
+      비우지 마십시오. 사서교사에게는 특히 — "책 제목을 지어내지 말 것" 한 줄이
+      가장 큰 값을 합니다.
+    </p>
+    <div id="bfields"></div>
+    <div class="sech">완성된 프롬프트</div>
+    <div class="pbox" id="bout">위 칸을 채우면 여기에 나타납니다.</div>
+    <div class="acts">
+      <button class="abtn" id="bcopy">복사하기</button>
+      <button class="abtn ghost" id="breset">비우기</button>
+    </div>
+  </div>
+</div>
+
+<!-- 개인정보 점검 -->
+<div class="modal" id="m-checker">
+  <div class="panel">
+    <button class="panel__x" data-close aria-label="닫기">
+      <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8"/></svg>
+    </button>
+    <div class="panel__k">넣기 전에</div>
+    <h3 class="panel__t">개인정보 점검</h3>
+    <p class="panel__d">
+      AI에 붙여넣으려는 글을 먼저 여기에 넣어 보십시오. 점검은
+      <b>이 브라우저 안에서만</b> 이뤄지고 아무 데도 전송되지 않습니다.
+      다만 기계가 잡는 것은 눈에 띄는 형태뿐입니다. 도서관에서는 특히
+      <b>대출 이력과 신청 내역</b>이 위험합니다 — 무엇을 빌렸는지는
+      그 사람이 무엇을 궁금해했는지의 기록이니까요.
+    </p>
+    <textarea class="chk__in" id="chkin" placeholder="여기에 붙여넣으십시오. 예: 3학년 2반 김민준 학생이 지난 3월 14일에 대출한 도서는…"></textarea>
+    <div class="acts">
+      <button class="abtn" id="chkrun">점검하기</button>
+      <button class="abtn ghost" id="chkmask">찾은 것 가리고 복사</button>
+      <button class="abtn ghost" id="chkclear">비우기</button>
+    </div>
+    <div id="chkout"></div>
+  </div>
+</div>
+
+<!-- 다섯 가지 -->
+<div class="modal" id="m-rules">
+  <div class="panel">
+    <button class="panel__x" data-close aria-label="닫기">
+      <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8"/></svg>
+    </button>
+    <div class="panel__k">지키는 선</div>
+    <h3 class="panel__t">사서교사의 다섯 가지</h3>
+    <p class="panel__d">
+      교육부 「생성형 인공지능 활용교육 교사용 가이드라인」과 도서관 실무를 겹쳐 놓고,
+      학교도서관에서 실제로 사고가 나는 지점만 다섯으로 추렸습니다.
+    </p>
+    <div id="rules"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="prompts.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
