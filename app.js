@@ -144,7 +144,7 @@ function fill(body, vals, mode) {
 function buildRail() {
   const rail = $('#rail');
   const mk = (id, glyph, name, sub, n) =>
-    '<button class="railitem" data-cat="' + id + '" aria-pressed="' + (state.cat === id) + '">' +
+    '<button class="railitem" data-cat="' + id + '" style="--cat:var(--c-' + id + ')" aria-pressed="' + (state.cat === id) + '">' +
       '<span class="railitem__n">' + glyph + '</span>' +
       '<span class="railitem__t">' + name + '</span>' +
       '<span class="railitem__s">' + sub + ' · ' + n + '편</span>' +
@@ -203,9 +203,10 @@ function cardHTML(p) {
   const c = catOf(p.cat);
   const fav = state.favs.indexOf(p.id) > -1;
   const lv = [1, 2, 3].map(n => '<i class="' + (n <= p.level ? 'on' : '') + '"></i>').join('');
-  return '<div class="card" role="button" tabindex="0" data-id="' + p.id + '">' +
+  return '<div class="card" role="button" tabindex="0" data-id="' + p.id + '" style="--cat:var(--c-' + p.cat + ')">' +
     '<span class="card__top">' +
       '<span class="card__cat">' + c.glyph + '</span>' +
+      '<span class="card__badge">' + esc(c.name) + '</span>' +
       '<span class="card__lv" title="깊이 ' + p.level + '/3">' + lv + '</span>' +
     '</span>' +
     '<span class="card__t">' + esc(p.title) + '</span>' +
@@ -232,6 +233,8 @@ function render() {
     : (c ? c.name : '전체');
   $('#lh-c').textContent = list.length + '편' +
     (state.q && state.chip === null ? ' · “' + state.q + '” 검색' : '');
+  $('.listhead').style.setProperty('--cat',
+    'var(--c-' + (c && !state.favOnly && state.chip === null ? c.id : 'all') + ')');
 
   $$('.railitem').forEach(b => b.setAttribute('aria-pressed',
     String(!state.favOnly && state.chip === null && b.dataset.cat === state.cat)));
@@ -273,6 +276,7 @@ function openSheet(id) {
   const vals = state.vals[id] || {};
 
   $('#sheet-idx').textContent = c.glyph + ' · ' + c.name;
+  $('#sheet').style.setProperty('--cat', 'var(--c-' + p.cat + ')');
   const toolLine = p.tools.map(t => (TOOLS[t] || { label: t }).label).join(' · ');
 
   let html =
@@ -321,7 +325,7 @@ function openSheet(id) {
   const nx = (p.next || []).map(byId).filter(Boolean);
   if (nx.length) {
     html += '<div class="sech">이어 쓰면 좋은 것</div><div class="nexts">' +
-      nx.map(n => '<button class="nextitem" data-goto="' + n.id + '">' +
+      nx.map(n => '<button class="nextitem" data-goto="' + n.id + '" style="--cat:var(--c-' + n.cat + ')">' +
         '<b>' + esc(n.title) + '</b><span>' + catOf(n.cat).glyph + '. ' + esc(catOf(n.cat).name) + ' · ' + esc(n.desc) + '</span>' +
       '</button>').join('') + '</div>';
   }
@@ -396,7 +400,7 @@ function buildCal() {
       '<ul class="cal__list">' + m.todo.map(t => '<li>' + t + '</li>').join('') + '</ul>' +
       '<div class="cal__picks">' + m.picks.map(id => {
         const p = byId(id);
-        return p ? '<button class="cal__pick" data-goto="' + id + '">' + esc(p.title) + '</button>' : '';
+        return p ? '<button class="cal__pick" data-goto="' + id + '" style="--cat:var(--c-' + p.cat + ')">' + esc(p.title) + '</button>' : '';
       }).join('') + '</div>' +
     '</div>').join('');
 }

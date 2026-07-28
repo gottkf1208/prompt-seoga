@@ -6,15 +6,15 @@
  */
 
 const CATS = [
-  { id: 'pick',  name: '책을 고르는 일',   sub: '수서·장서·폐기·점검',      glyph: 'I' },
-  { id: 'show',  name: '책을 알리는 일',   sub: '북큐레이션·전시·소식지',    glyph: 'II' },
-  { id: 'teach', name: '책으로 가르치는 일', sub: '이용교육·정보활용·협력수업', glyph: 'III' },
-  { id: 'event', name: '자리를 여는 일',   sub: '행사·프로그램·동아리',      glyph: 'IV' },
-  { id: 'run',   name: '도서관을 꾸리는 일', sub: '운영계획·위원회·예산·통계',  glyph: 'V' },
-  { id: 'child', name: '아이를 살피는 일',  sub: '독서상담·맞춤지원·기록',     glyph: 'VI' },
-  { id: 'right', name: '바르게 쓰는 일',   sub: '저작권·정보윤리·AI 리터러시', glyph: 'VII' },
-  { id: 'grow',  name: '나를 기르는 일',   sub: '연구회·연수·발표·회복',      glyph: 'VIII' },
-  { id: 'hand',  name: '손을 더는 일',     sub: '자동화·데이터·요약·변환',    glyph: 'IX' }
+  { id: 'pick',  name: '수서·장서관리',   sub: '도서선정·희망도서·장서점검·폐기',  glyph: 'I' },
+  { id: 'show',  name: '북큐레이션·홍보', sub: '전시·서가사인·소식지·포스터',     glyph: 'II' },
+  { id: 'teach', name: '독서교육·수업',   sub: '이용교육·정보활용·협력수업·토론',  glyph: 'III' },
+  { id: 'event', name: '독서행사·동아리', sub: '도서관주간·독서의달·작가초청·도서부', glyph: 'IV' },
+  { id: 'run',   name: '도서관 운영·행정', sub: '운영계획·위원회·예산·통계·공간',   glyph: 'V' },
+  { id: 'child', name: '학생 지원·기록',  sub: '도서추천·읽기부진·다문화·생기부',   glyph: 'VI' },
+  { id: 'right', name: '저작권·정보윤리', sub: '저작권·인용·AI 리터러시·개인정보',  glyph: 'VII' },
+  { id: 'grow',  name: '연수·자기계발',   sub: '연구회·사례발표·성장·소진회복',    glyph: 'VIII' },
+  { id: 'hand',  name: '업무 자동화',     sub: '엑셀·앱스크립트·요약·번역',       glyph: 'IX' }
 ];
 
 const TOOLS = {
